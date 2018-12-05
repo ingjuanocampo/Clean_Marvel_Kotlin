@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Comic
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Thumbnail
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterByIdServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxDialogFragment
