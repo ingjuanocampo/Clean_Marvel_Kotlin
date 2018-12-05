@@ -5,13 +5,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CharacterDetailPresenter (characterId: String, view : CharacterDetailsView, private val getCharacterByIdServiceUseCase: GetCharacterByIdServiceUseCase, val subscriptions: CompositeDisposable) {
+class CharacterDetailPresenter (val view : CharacterDetailsView, private val getCharacterByIdServiceUseCase: GetCharacterByIdServiceUseCase, val subscriptions: CompositeDisposable) {
 
-    init {
+    fun init (characterId: String) {
         view.showLoader()
 
         val subscription = getCharacterByIdServiceUseCase.invoke(characterId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe ({ character ->
+                    view.showContainer()
                     view.showImage(character.thumbnail)
                     view.showName(character.name)
                     view.showDescription(character.description)
