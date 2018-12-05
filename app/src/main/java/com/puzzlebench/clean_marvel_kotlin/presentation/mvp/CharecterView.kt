@@ -14,7 +14,7 @@ class CharecterView(activity: MainActivity) {
     private val activityRef = WeakReference(activity)
     private val SPAN_COUNT = 1
     var adapter = CharacterAdapter {
-        character -> activity.applicationContext.showToast(character.name)
+        character -> activity.showDetails(character)
     }
 
     fun init() {

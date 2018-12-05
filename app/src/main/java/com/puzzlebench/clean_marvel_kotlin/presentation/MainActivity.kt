@@ -3,6 +3,7 @@ package com.puzzlebench.clean_marvel_kotlin.presentation
 import android.os.Bundle
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
+import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
@@ -17,5 +18,10 @@ open class MainActivity : BaseRxActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter.init()
+    }
+
+    fun showDetails(character: Character) {
+        CharacterDetailDialogFragment.newInstance(characterId = character.id)
+                .show(fragmentManager, CharacterDetailDialogFragment::class.java.simpleName)
     }
 }
