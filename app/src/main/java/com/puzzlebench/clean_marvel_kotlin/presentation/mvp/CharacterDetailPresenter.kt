@@ -16,7 +16,12 @@ class CharacterDetailPresenter (val view : CharacterDetailsView, private val get
                     view.showImage(character.thumbnail)
                     view.showName(character.name)
                     view.showDescription(character.description)
-                    // TODO add more details into the pojo, like series, events etc
+
+                    var comicText = "# : ${character.comics.available} "
+                    for (comic in character.comics.items) {
+                        comicText += " \n ${comic.name}"
+                    }
+                    view.showComicsInfo(comicText)
                 } , { e->
                     view.hideLoader()
                     view.showToastNetworkError(e.message.toString())

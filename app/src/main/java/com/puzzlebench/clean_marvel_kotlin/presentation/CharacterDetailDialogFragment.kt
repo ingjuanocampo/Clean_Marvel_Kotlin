@@ -1,7 +1,5 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -9,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
+import com.puzzlebench.clean_marvel_kotlin.domain.model.Comic
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Thumbnail
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterByIdServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxDialogFragment
@@ -20,11 +19,11 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterDetailPrese
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterDetailsView
 import kotlinx.android.synthetic.main.diaglog_fragment_character_detail.*
 
-class CharacterDetailDialogFragment : BaseRxDialogFragment() , CharacterDetailsView {
+class CharacterDetailDialogFragment : BaseRxDialogFragment(), CharacterDetailsView {
 
     companion object {
-        const val ARGUMENT_CHARACTER_ID  = "CHARACTER_ID"
-        fun newInstance(characterId : String) : CharacterDetailDialogFragment {
+        const val ARGUMENT_CHARACTER_ID = "CHARACTER_ID"
+        fun newInstance(characterId: String): CharacterDetailDialogFragment {
             val dialogFragment = CharacterDetailDialogFragment()
             val arguments = Bundle()
             arguments.putString(ARGUMENT_CHARACTER_ID, characterId)
@@ -36,15 +35,6 @@ class CharacterDetailDialogFragment : BaseRxDialogFragment() , CharacterDetailsV
     val getCharacterByIdServiceUseCase = GetCharacterByIdServiceUseCase(CharacterServicesImpl())
 
     var presenter = CharacterDetailPresenter(this, getCharacterByIdServiceUseCase, subscriptions)
-
-    /*override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-
-        val builder = AlertDialog.Builder(activity)
-        val inflater = activity.layoutInflater
-        builder.setView(inflater.inflate(R.layout.diaglog_fragment_character_detail, null))
-
-        return builder.create()
-    }*/
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -92,6 +82,10 @@ class CharacterDetailDialogFragment : BaseRxDialogFragment() , CharacterDetailsV
 
     override fun showToastNetworkError(error: String) {
         activity.applicationContext.showToast(error)
+    }
+
+    override fun showComicsInfo(comics : String) {
+        texComicsCharacterDetail.text = comics
     }
 
 }

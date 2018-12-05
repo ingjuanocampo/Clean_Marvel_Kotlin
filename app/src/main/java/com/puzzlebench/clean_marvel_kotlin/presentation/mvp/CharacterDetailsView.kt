@@ -18,4 +18,6 @@ interface CharacterDetailsView {
 
     fun showContainer()
 
+    fun showComicsInfo(comics: String)
+
 }

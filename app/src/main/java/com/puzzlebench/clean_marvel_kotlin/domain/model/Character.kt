@@ -4,5 +4,6 @@ class Character(
         val id : String,
         val name: String,
         val description: String,
-        val thumbnail: Thumbnail
+        val thumbnail: Thumbnail,
+        val comics : Comic
 )
