@@ -22,4 +22,18 @@ class CharacterServicesImpl(private val api: MarvelResquestGenerator = MarvelRes
             }
         }
     }
+
+    fun getCaracterById(characterId : String): Observable<Character> {
+        return Observable.create { subscriber ->
+            val callResponse = api.createService(MarvelApi::class.java).getCharacterById(characterId)
+            val response = callResponse.execute()
+
+            if (response.isSuccessful) {
+                subscriber.onNext(mapper.transform(response.body()!!.data!!))
+                subscriber.onComplete()
+            } else {
+                subscriber.onError(Throwable(response.message()))
+            }
+        }
+    }
 }
