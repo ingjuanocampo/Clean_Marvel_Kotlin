@@ -6,10 +6,10 @@
     android:background="@android:color/transparent">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="350dp"
+        android:layout_width="@dimen/character_details_dialog_width"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
         <ProgressBar
             android:id="@+id/progressBarCharacterDetail"
@@ -28,8 +28,8 @@
 
             <ImageView
                 android:id="@+id/imageCharacterDetail"
-                android:layout_width="350dp"
-                android:layout_height="250dp"
+                android:layout_width="@dimen/character_details_dialog_width"
+                android:layout_height="@dimen/character_details_image_height"
                 android:scaleType="centerInside" />
 
             <TextView
@@ -39,7 +39,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginRight="@dimen/default_margin"                android:text="Name of the character " />
+                android:layout_marginRight="@dimen/default_margin"
+                tools:text="Name of the character " />
 
 
             <TextView
@@ -49,7 +50,7 @@
                 android:layout_marginLeft="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginRight="@dimen/default_margin"
-                android:text="Comics"
+                android:text="@string/character_detail_comic"
                 android:textStyle="bold" />
 
             <TextView
@@ -67,11 +68,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/default_margin"
-                android:text="Description" />
+                tools:text="Description" />
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 </ScrollView>
